@@ -1,9 +1,9 @@
 /*!
- * bootstrap-typeahead.js v0.0.5 (http://www.upbootstrap.com)
+ * bootstrap-typeahead.js v0.0.6 (http://www.upbootstrap.com)
  * Copyright 2012-2017 Twitter Inc.
  * Licensed under MIT (https://github.com/biggora/bootstrap-ajax-typeahead/blob/master/LICENSE)
  * See Demo: http://plugins.upbootstrap.com/bootstrap-ajax-typeahead
- * Updated: 2017-05-12 10:37:52
+ * Updated: 2017-05-12 11:17:23
  *
  * Modifications by Paul Warelis and Alexey Gordeyev
  */
