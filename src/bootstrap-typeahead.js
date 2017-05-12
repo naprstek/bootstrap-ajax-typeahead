@@ -29,6 +29,7 @@
         that.onSelect = that.options.onSelect || null;
         that.sorter = that.options.sorter || that.sorter;
         that.select = that.options.select || that.select;
+        that.updater = that.options.updater || that.updater;
         that.source = that.options.source || that.source;
         that.displayField = that.options.displayField || that.displayField;
         that.valueField = that.options.valueField || that.valueField;
@@ -133,7 +134,7 @@
 
             var query = $.trim(this.$element.val());
 
-            if (query === this.query) {
+            if (query && query === this.query) {
                 return this;
             }
 
@@ -146,7 +147,7 @@
                 this.ajax.timerId = null;
             }
 
-            if (!query || query.length < this.ajax.triggerLength) {
+            if (query.length < this.ajax.triggerLength) {
                 // cancel the ajax callback if in progress
                 if (this.ajax.xhr) {
                     this.ajax.xhr.abort();
@@ -432,6 +433,11 @@
         },
         focus: function (e) {
             this.focused = true
+            if (this.ajax.triggerLength == 0 && $.trim(this.$element.val()).length == 0)
+                    if (this.ajax)
+                        this.ajaxLookup()
+                    else
+                        this.lookup()
         },
         blur: function (e) {
             this.focused = false
