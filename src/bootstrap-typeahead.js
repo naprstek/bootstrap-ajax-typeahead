@@ -84,7 +84,7 @@
         //  * This was included to handle the "exhaustive deprecation" of jQuery.browser in jQuery 1.8
         //=============================================================================================================
         eventSupported: function (eventName) {
-            var isSupported = this.$element.hasOwnProperty(eventName);
+            var isSupported = (eventName in this.$element);
 
             if (!isSupported) {
                 this.$element.setAttribute(eventName, 'return;');
