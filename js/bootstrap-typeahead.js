@@ -3,7 +3,7 @@
  * Copyright 2012-2018 Twitter Inc.
  * Licensed under MIT (https://github.com/biggora/bootstrap-ajax-typeahead/blob/master/LICENSE)
  * See Demo: http://plugins.upbootstrap.com/bootstrap-ajax-typeahead
- * Updated: 2018-01-02 10:40:44
+ * Updated: 2018-01-02 02:10:42
  *
  * Modifications by Paul Warelis and Alexey Gordeyev
  */
@@ -93,7 +93,7 @@
         //  * This was included to handle the "exhaustive deprecation" of jQuery.browser in jQuery 1.8
         //=============================================================================================================
         eventSupported: function (eventName) {
-            var isSupported = this.$element.hasOwnProperty(eventName);
+            var isSupported = (eventName in this.$element);
 
             if (!isSupported) {
                 this.$element.setAttribute(eventName, 'return;');
