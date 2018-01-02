@@ -3,7 +3,7 @@
  * Copyright 2012-2018 Twitter Inc.
  * Licensed under MIT (https://github.com/biggora/bootstrap-ajax-typeahead/blob/master/LICENSE)
  * See Demo: http://plugins.upbootstrap.com/bootstrap-ajax-typeahead
- * Updated: 2018-01-02 10:35:57
+ * Updated: 2018-01-02 10:40:44
  *
  * Modifications by Paul Warelis and Alexey Gordeyev
  */
@@ -467,11 +467,13 @@
         },
         focus: function (ignore) {
             this.focused = true;
-            if (this.ajax.triggerLength == 0 && $.trim(this.$element.val()).length == 0)
-                    if (this.ajax)
-                        this.ajaxLookup()
-                    else
-                        this.lookup()
+            if (this.ajax.triggerLength == 0 && $.trim(this.$element.val()).length == 0) {
+				if (this.ajax) {
+					this.ajaxLookup();
+				} else {
+					this.lookup();
+				}
+			}
         },
         blur: function (ignore) {
             this.focused = false;

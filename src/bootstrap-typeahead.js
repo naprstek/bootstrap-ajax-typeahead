@@ -458,11 +458,13 @@
         },
         focus: function (ignore) {
             this.focused = true;
-            if (this.ajax.triggerLength == 0 && $.trim(this.$element.val()).length == 0)
-                    if (this.ajax)
-                        this.ajaxLookup()
-                    else
-                        this.lookup()
+            if (this.ajax.triggerLength == 0 && $.trim(this.$element.val()).length == 0) {
+				if (this.ajax) {
+					this.ajaxLookup();
+				} else {
+					this.lookup();
+				}
+			}
         },
         blur: function (ignore) {
             this.focused = false;
