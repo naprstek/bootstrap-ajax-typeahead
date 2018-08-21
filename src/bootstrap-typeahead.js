@@ -471,10 +471,7 @@
             if (!this.mousedover && this.shown) {
                 this.focused = false;
                 this.hide();
-            } else {
-                this.$element.focus();
-			}
-
+            }
 		},
         click: function (e) {
             e.stopPropagation();
