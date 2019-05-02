@@ -240,7 +240,9 @@
         lookup: function (ignore) { //ignore because of jslint (ignores unused params)
             var that = this, items;
             if (that.ajax) {
-                that.ajaxer();
+                that.triggerLength = that.$element.val().length;
+                that.query = '';
+                that.ajaxLookup();
             } else {
                 that.query = that.$element.val();
 
