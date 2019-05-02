@@ -384,8 +384,9 @@
 
             this.$menu
                 .on('click', $.proxy(this.click, this))
-                .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
-                .on('mouseleave', 'li', $.proxy(this.mouseleave, this));
+                .on('mouseenter', 'li', $.proxy(this.mouseenterli, this))
+                .on('mouseenter', $.proxy(this.mouseenter, this))
+                .on('mouseleave', $.proxy(this.mouseleave, this));
         },
         move: function (e) {
             if (!this.shown) {
@@ -467,27 +468,26 @@
 			}
         },
         blur: function (ignore) {
-            this.focused = false;
             if (!this.mousedover && this.shown) {
+                this.focused = false;
                 this.hide();
             }
-        },
+		},
         click: function (e) {
             e.stopPropagation();
             e.preventDefault();
             this.select();
             this.$element.focus();
         },
-        mouseenter: function (e) {
-            this.mousedover = true;
+        mouseenterli: function (e) {
             this.$menu.find('.active').removeClass('active');
             $(e.currentTarget).addClass('active');
         },
+        mouseenter: function (ignore) {
+            this.mousedover = true;
+        },
         mouseleave: function (ignore) {
             this.mousedover = false;
-            if (!this.focused && this.shown) {
-                this.hide();
-            }
         },
         destroy: function () {
             this.$element
@@ -502,9 +502,11 @@
 
             this.$menu
                 .off('click', $.proxy(this.click, this))
-                .off('mouseenter', 'li', $.proxy(this.mouseenter, this))
-                .off('mouseleave', 'li', $.proxy(this.mouseleave, this));
-            this.$element.removeData('typeahead');
+                .off('mouseenter', 'li', $.proxy(this.mouseenterli, this))
+                .off('mouseenter', $.proxy(this.mouseenter, this))
+                .off('mouseleave', $.proxy(this.mouseleave, this));
+
+			this.$element.removeData('typeahead');
         }
     };
 
